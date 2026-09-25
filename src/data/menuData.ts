@@ -1,11 +1,5 @@
 import { MenuItem } from '../types/restaurant';
 
-// Static ESM imports matching the exact image filenames in your repository
-import heroImg from '../assets/images/sultans_hero_spread_1790303274721.jpg';
-import quickBitesImg from '../assets/images/sultans_quickbites_party_1790303314617.jpg';
-import biryaniImg from '../assets/images/sultans_special_biryani_1790303303153.jpg';
-import kababImg from '../assets/images/sultans_starters_kabab_1790303289327.jpg';
-
 export const RESTAURANT_INFO = {
   name: "Sultan's Restaurant",
   tagline: "Vijayanagar's Favorite Local Bites",
@@ -19,7 +13,7 @@ export const RESTAURANT_INFO = {
   timingEnd: "23:00",
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=52,+Magadi+Main+Rd,+MC+Layout,+Vijayanagar,+Bengaluru,+Karnataka+560079",
   whatsappUrl: "https://wa.me/919448206692",
-  heroImage: heroImg,
+  heroImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200',
 };
 
 export const PARCEL_SETTINGS = {
@@ -39,7 +33,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "6 pcs",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-2',
@@ -51,7 +45,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "5 pcs",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-3',
@@ -62,7 +56,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 3,
     portion: "Full plate",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-4',
@@ -73,7 +67,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 3,
     portion: "Full plate",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-5',
@@ -85,7 +79,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Full plate",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-6',
@@ -96,7 +90,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 2,
     portion: "8 pcs",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-7',
@@ -107,7 +101,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 2,
     portion: "4 eggs",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-8',
@@ -118,7 +112,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Full plate",
-    image: kababImg,
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=800',
   },
 
   // --- MAIN COURSE ---
@@ -132,7 +126,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Serves 1 hearty",
-    image: biryaniImg,
+    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-2',
@@ -144,7 +138,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Serves 1 hearty",
-    image: biryaniImg,
+    image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-3',
@@ -156,7 +150,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Hearty combo",
-    image: biryaniImg,
+    image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-4',
@@ -167,7 +161,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "2 eggs + rice",
-    image: biryaniImg,
+    image: 'https://images.unsplash.com/photo-1642821373181-696a54913e93?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-5',
@@ -178,7 +172,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "Full portion",
-    image: biryaniImg,
+    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-6',
@@ -189,7 +183,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 2,
     portion: "Serves 1-2",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-7',
@@ -200,7 +194,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Serves 1-2",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-8',
@@ -211,7 +205,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "2 pieces",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'mc-9',
@@ -222,7 +216,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "1 piece",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1617692855027-33b14f061079?auto=format&fit=crop&q=80&w=800',
   },
 
   // --- QUICK BITES & STREET EATS ---
@@ -236,7 +230,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "1 jumbo roll",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-2',
@@ -247,7 +241,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "1 roll",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-3',
@@ -259,7 +253,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 3,
     portion: "Full plate",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-4',
@@ -270,7 +264,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 3,
     portion: "Full plate",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-5',
@@ -281,7 +275,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 2,
     portion: "Full plate",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-6',
@@ -292,7 +286,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Full plate",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-7',
@@ -303,7 +297,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "Plate with bread",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-8',
@@ -314,7 +308,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Basket",
-    image: quickBitesImg,
+    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&q=80&w=800',
   },
 
   // --- BEVERAGES & DESSERTS ---
@@ -327,7 +321,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     isBestseller: true,
     portion: "Tall glass",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'bv-2',
@@ -337,7 +331,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Freshly squeezed lemon juice topped with sparkling soda and ice.",
     isVeg: true,
     portion: "Glass",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'bv-3',
@@ -347,7 +341,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Traditional rich saffron-infused almond milk served ice-cold with almond flakes.",
     isVeg: true,
     portion: "Bottle",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'bv-4',
@@ -357,7 +351,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Traditional Malabar spiced black tea with a splash of fresh lemon and mint. Perfect digestif.",
     isVeg: true,
     portion: "Cup",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'bv-5',
@@ -367,7 +361,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Thums Up, Sprite, Coke, or packaged drinking water (chilled).",
     isVeg: true,
     portion: "Can / Bottle",
-    image: heroImg,
+    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=800',
   },
 ];
 
