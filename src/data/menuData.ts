@@ -1,5 +1,18 @@
 import { MenuItem } from '../types/restaurant';
 
+// Helper function to dynamically process images from src/assets/images/ for Vite production builds
+const getImageUrl = (filename: string) => {
+  return new URL(`../assets/images/${filename}`, import.meta.url).href;
+};
+
+// Image assets mapping from src/assets/images/
+const IMAGES = {
+  biryani: getImageUrl('sultans_special_biryani_1790303274721.jpg'),
+  starters: getImageUrl('sultans_starters_kabab_1790303274721.jpg'),
+  bites: getImageUrl('sultans_quickbites_party_1790303274721.jpg'),
+  hero: getImageUrl('sultans_hero_spread_1790303274721.jpg'),
+};
+
 export const RESTAURANT_INFO = {
   name: "Sultan's Restaurant",
   tagline: "Vijayanagar's Favorite Local Bites",
@@ -13,6 +26,7 @@ export const RESTAURANT_INFO = {
   timingEnd: "23:00",
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=52,+Magadi+Main+Rd,+MC+Layout,+Vijayanagar,+Bengaluru,+Karnataka+560079",
   whatsappUrl: "https://wa.me/919448206692",
+  heroImage: IMAGES.hero,
 };
 
 export const PARCEL_SETTINGS = {
@@ -32,6 +46,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "6 pcs",
+    image: IMAGES.starters,
   },
   {
     id: 'st-2',
@@ -43,6 +58,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "5 pcs",
+    image: IMAGES.starters,
   },
   {
     id: 'st-3',
@@ -53,6 +69,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 3,
     portion: "Full plate",
+    image: IMAGES.starters,
   },
   {
     id: 'st-4',
@@ -63,6 +80,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 3,
     portion: "Full plate",
+    image: IMAGES.starters,
   },
   {
     id: 'st-5',
@@ -74,6 +92,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Full plate",
+    image: IMAGES.starters,
   },
   {
     id: 'st-6',
@@ -84,6 +103,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 2,
     portion: "8 pcs",
+    image: IMAGES.starters,
   },
   {
     id: 'st-7',
@@ -94,6 +114,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 2,
     portion: "4 eggs",
+    image: IMAGES.starters,
   },
   {
     id: 'st-8',
@@ -104,6 +125,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Full plate",
+    image: IMAGES.starters,
   },
 
   // --- MAIN COURSE ---
@@ -117,6 +139,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Serves 1 hearty",
+    image: IMAGES.biryani,
   },
   {
     id: 'mc-2',
@@ -128,6 +151,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Serves 1 hearty",
+    image: IMAGES.biryani,
   },
   {
     id: 'mc-3',
@@ -139,6 +163,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Hearty combo",
+    image: IMAGES.biryani,
   },
   {
     id: 'mc-4',
@@ -149,6 +174,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "2 eggs + rice",
+    image: IMAGES.biryani,
   },
   {
     id: 'mc-5',
@@ -159,6 +185,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "Full portion",
+    image: IMAGES.biryani,
   },
   {
     id: 'mc-6',
@@ -169,6 +196,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 2,
     portion: "Serves 1-2",
+    image: IMAGES.hero,
   },
   {
     id: 'mc-7',
@@ -179,6 +207,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Serves 1-2",
+    image: IMAGES.hero,
   },
   {
     id: 'mc-8',
@@ -189,6 +218,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "2 pieces",
+    image: IMAGES.hero,
   },
   {
     id: 'mc-9',
@@ -199,6 +229,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "1 piece",
+    image: IMAGES.hero,
   },
 
   // --- QUICK BITES & STREET EATS ---
@@ -212,6 +243,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "1 jumbo roll",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-2',
@@ -222,6 +254,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "1 roll",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-3',
@@ -233,6 +266,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 3,
     portion: "Full plate",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-4',
@@ -243,6 +277,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 3,
     portion: "Full plate",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-5',
@@ -253,6 +288,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 2,
     portion: "Full plate",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-6',
@@ -263,6 +299,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Full plate",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-7',
@@ -273,6 +310,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "Plate with bread",
+    image: IMAGES.bites,
   },
   {
     id: 'qb-8',
@@ -283,6 +321,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     spiceLevel: 1,
     portion: "Basket",
+    image: IMAGES.bites,
   },
 
   // --- BEVERAGES & DESSERTS ---
@@ -295,6 +334,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: true,
     isBestseller: true,
     portion: "Tall glass",
+    image: IMAGES.hero,
   },
   {
     id: 'bv-2',
@@ -304,6 +344,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Freshly squeezed lemon juice topped with sparkling soda and ice.",
     isVeg: true,
     portion: "Glass",
+    image: IMAGES.hero,
   },
   {
     id: 'bv-3',
@@ -313,6 +354,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Traditional rich saffron-infused almond milk served ice-cold with almond flakes.",
     isVeg: true,
     portion: "Bottle",
+    image: IMAGES.hero,
   },
   {
     id: 'bv-4',
@@ -322,6 +364,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Traditional Malabar spiced black tea with a splash of fresh lemon and mint. Perfect digestif.",
     isVeg: true,
     portion: "Cup",
+    image: IMAGES.hero,
   },
   {
     id: 'bv-5',
@@ -331,6 +374,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Thums Up, Sprite, Coke, or packaged drinking water (chilled).",
     isVeg: true,
     portion: "Can / Bottle",
+    image: IMAGES.hero,
   },
 ];
 
