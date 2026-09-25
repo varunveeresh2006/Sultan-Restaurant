@@ -1,0 +1,6 @@
+{
+  "name": "Sultan's Restaurant - Vijayanagar, Bengaluru",
+  "description": "Vijayanagar's favorite pocket-friendly fast-casual restaurant on Magadi Main Rd. Savor aromatic biryanis, crispy kababs, quick bites, and family dining.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

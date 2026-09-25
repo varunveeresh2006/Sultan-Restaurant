@@ -1,0 +1,80 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == 'varunveeresh43@gmail.com'
+      );
+    }
+
+    function isValidReservation(data) {
+      return data.keys().hasAll(['name', 'phone', 'people', 'date', 'time', 'type', 'status', 'createdAt']) &&
+        data.keys().hasOnly(['name', 'phone', 'people', 'date', 'time', 'type', 'status', 'createdAt', 'specialRequests']) &&
+        data.name is string && data.name.size() >= 2 && data.name.size() <= 80 &&
+        data.phone is string && data.phone.size() >= 10 && data.phone.size() <= 15 &&
+        data.people is int && data.people >= 1 && data.people <= 100 &&
+        data.date is string && data.date.size() == 10 &&
+        data.time is string && data.time.size() >= 4 && data.time.size() <= 8 &&
+        data.type in ['dine-in', 'bulk-party', 'takeaway'] &&
+        data.status in ['pending', 'confirmed', 'completed', 'cancelled'] &&
+        (!('specialRequests' in data) || (data.specialRequests is string && data.specialRequests.size() <= 500));
+    }
+
+    // Public Customer Reservations (secure insertion without login; management strictly restricted to admin)
+    match /reservations/{reservationId} {
+      // Anyone (public unauthenticated user) can create a valid pending reservation
+      allow create: if isValidId(reservationId) &&
+        isValidReservation(incoming()) &&
+        incoming().status == 'pending' &&
+        incoming().createdAt == request.time;
+
+      // Only authenticated admin can view or list reservations
+      allow read, list: if isAdmin();
+
+      // Only authenticated admin can update reservation status or details
+      allow update: if isAdmin() &&
+        isValidReservation(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['status', 'specialRequests', 'people', 'date', 'time', 'type', 'name', 'phone']);
+
+      // Only authenticated admin can delete reservations
+      allow delete: if isAdmin();
+    }
+
+    // Admin records
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && (request.auth.uid == adminId || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // Public connection test doc
+    match /test/connection {
+      allow read: if true;
+    }
+  }
+}

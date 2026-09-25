@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "Reservation": {
+      "title": "Reservation",
+      "description": "Public customer table reservation or bulk party enquiry",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Customer full name",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer 10-digit Indian phone number",
+          "minLength": 10,
+          "maxLength": 15
+        },
+        "people": {
+          "type": "integer",
+          "description": "Number of guests attending"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of arrival in YYYY-MM-DD format",
+          "minLength": 10,
+          "maxLength": 10
+        },
+        "time": {
+          "type": "string",
+          "description": "Time slot between 13:00 and 23:00",
+          "minLength": 4,
+          "maxLength": 8
+        },
+        "type": {
+          "type": "string",
+          "description": "Service type requested",
+          "enum": ["dine-in", "bulk-party", "takeaway"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the reservation",
+          "enum": ["pending", "confirmed", "completed", "cancelled"]
+        },
+        "specialRequests": {
+          "type": "string",
+          "description": "Customer notes or birthday preferences",
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        }
+      },
+      "required": ["name", "phone", "people", "date", "time", "type", "status", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized restaurant manager or owner administrator record",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Admin email address"
+        },
+        "name": {
+          "type": "string",
+          "description": "Admin display name"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["manager", "owner", "cashier"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/reservations/{reservationId}": {
+      "schema": "Reservation",
+      "description": "Table bookings and bulk party enquiries submitted by customers and managed by admins"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Authorized administrators with elevated management access"
+    }
+  }
+}
