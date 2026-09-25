@@ -14,6 +14,7 @@ export interface MenuItem {
   isBestseller?: boolean;
   spiceLevel?: 1 | 2 | 3; // 1 = mild, 2 = medium, 3 = spicy
   portion?: string;
+  image?: string; // Added image property
 }
 
 export interface CartItem {
