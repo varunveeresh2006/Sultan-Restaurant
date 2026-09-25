@@ -13,13 +13,44 @@ export const RESTAURANT_INFO = {
   timingEnd: "23:00",
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=52,+Magadi+Main+Rd,+MC+Layout,+Vijayanagar,+Bengaluru,+Karnataka+560079",
   whatsappUrl: "https://wa.me/919448206692",
-  heroImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200',
+  heroImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200",
 };
 
 export const PARCEL_SETTINGS = {
   chargePerContainer: 10,
   description: "Hygienic leak-proof aluminum/plastic container packaging for takeaway & delivery",
 };
+
+// Top Featured Banner Cards shown at the top of the home page
+export const FEATURED_ITEMS = [
+  {
+    id: 'ft-1',
+    title: "Sultan's Crispy Chicken Kabab",
+    subtitle: "SIGNATURE STARTERS · 6 HEARTY PIECES",
+    price: 140,
+    badge: "Vijayanagar Favorite",
+    description: "Deep-red, crackling crispy on the outside, succulent on the inside. Tossed with fresh curry leaves, sliced onions, and lime.",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    id: 'ft-2',
+    title: "Sultan's Special Dum Biryani",
+    subtitle: "AROMATIC MAINS · SERVES 1 HEARTY",
+    price: 180,
+    badge: "Best-Selling Pot",
+    description: "Layered with long-grain rice, tender marinated chicken, boiled egg, fried caramelized onions, served with cooling raita & spiced salan.",
+    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    id: 'ft-3',
+    title: "Quick Bites & Roll Feast",
+    subtitle: "STREET EATS & COMBOS · FROM ₹90",
+    price: 90,
+    badge: "Crowd Favorite",
+    description: "Freshly tossed egg chicken rolls, spicy schezwan fried rice, and crunchy noodles for quick lunchtime bites or casual evening hangouts.",
+    image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800",
+  },
+];
 
 export const MENU_ITEMS: MenuItem[] = [
   // --- STARTERS ---
@@ -33,7 +64,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "6 pcs",
-    image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-2',
@@ -45,7 +76,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "5 pcs",
-    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-3',
@@ -79,7 +110,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isBestseller: true,
     spiceLevel: 2,
     portion: "Full plate",
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'st-6',
@@ -241,7 +272,7 @@ export const MENU_ITEMS: MenuItem[] = [
     isVeg: false,
     spiceLevel: 1,
     portion: "1 roll",
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'qb-3',
