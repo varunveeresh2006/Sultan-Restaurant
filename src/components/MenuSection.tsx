@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Flame, Plus, Check, Utensils, Sparkles, Filter } from 'lucide-react';
-import { MENU_ITEMS, RESTAURANT_INFO } from '../data/menuData';
+import { Search, Plus, Check, Utensils } from 'lucide-react';
+import { MENU_ITEMS } from '../data/menuData';
 import { MenuItem, MenuCategory, DietaryType } from '../types/restaurant';
 
 interface MenuSectionProps {
@@ -24,18 +24,15 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
 
   const filteredItems = useMemo(() => {
     return MENU_ITEMS.filter((item) => {
-      // Category filter
       if (activeCategory !== 'all' && item.category !== activeCategory) {
         return false;
       }
-      // Dietary filter
       if (dietaryFilter === 'veg' && !item.isVeg) {
         return false;
       }
       if (dietaryFilter === 'non-veg' && item.isVeg) {
         return false;
       }
-      // Search query
       if (searchQuery.trim() !== '') {
         const query = searchQuery.toLowerCase();
         const matchesName = item.name.toLowerCase().includes(query);
@@ -56,7 +53,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
     }, 900);
   };
 
-  // Group items by category when showing "all"
   const groupedItems = useMemo(() => {
     if (activeCategory !== 'all') {
       return [{ category: activeCategory, items: filteredItems }];
@@ -78,7 +74,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
     <section id="menu" className="py-16 sm:py-24 bg-stone-50 border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header & Physical Menu Aesthetic Intro */}
+        {/* Header Intro */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-orange-600 mb-2">
             <Utensils className="w-3.5 h-3.5" />
@@ -92,12 +88,10 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
           </p>
         </div>
 
-        {/* Controls: Category tabs, Dietary filter, and Search */}
+        {/* Controls */}
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs mb-10 space-y-4">
-          
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             
-            {/* Category Segmented Buttons */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
               {categories.map((cat) => (
                 <button
@@ -115,9 +109,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
               ))}
             </div>
 
-            {/* Right controls: Veg/Non-Veg filter & Search */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              {/* Veg / Non-Veg segmented pill */}
               <div className="flex items-center bg-stone-100 p-1 rounded-lg border border-stone-200">
                 <button
                   onClick={() => setDietaryFilter('all')}
@@ -156,7 +148,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
                 </button>
               </div>
 
-              {/* Search Bar */}
               <div className="relative flex-grow sm:flex-grow-0 sm:w-56">
                 <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
@@ -180,7 +171,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
 
           </div>
 
-          {/* Quick Dietary and Value Legend */}
           <div className="flex flex-wrap items-center justify-between text-xs text-stone-500 pt-2 border-t border-stone-100 gap-2">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
@@ -201,7 +191,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
 
         </div>
 
-        {/* Empty State if search matches nothing */}
+        {/* Empty State */}
         {filteredItems.length === 0 && (
           <div className="bg-white rounded-2xl p-12 text-center border border-stone-200 max-w-lg mx-auto">
             <p className="text-stone-600 font-semibold mb-2">No dishes match your search.</p>
@@ -220,7 +210,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
           </div>
         )}
 
-        {/* Physical Menu Grid Layout */}
+        {/* Menu Grid Layout */}
         <div className="space-y-10">
           {groupedItems.map((group) => (
             <div
@@ -240,8 +230,8 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
                 </span>
               </div>
 
-              {/* Items in 2-Column Physical Menu Grid */}
-              <div className="p-4 sm:p-7 grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-6">
+              {/* Items in 2-Column Grid with Images */}
+              <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {group.items.map((item) => {
                   const isAdded = cartItemIds.has(item.id);
                   const isJustAnimated = addedAnimationId === item.id;
@@ -249,77 +239,89 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
                   return (
                     <div
                       key={item.id}
-                      className="flex flex-col justify-between py-2 border-b border-stone-100 last:border-0 hover:bg-stone-50/70 p-2.5 rounded-lg transition-colors group"
+                      className="flex gap-3 sm:gap-4 p-3 rounded-xl border border-stone-100 hover:border-orange-200 hover:bg-stone-50/70 transition-all group"
                     >
-                      {/* Top line: Name + Dotted Line + Price + Add Button */}
-                      <div className="flex items-end justify-between gap-1 w-full">
-                        
-                        {/* Name and Dietary Icon */}
-                        <div className="flex items-center gap-2 shrink-0 max-w-[62%] sm:max-w-[70%]">
-                          {/* FSSAI Veg / Non-Veg Icon */}
-                          <span
-                            className={`w-3.5 h-3.5 border flex items-center justify-center p-0.5 rounded-xs shrink-0 ${
-                              item.isVeg ? 'border-emerald-600' : 'border-red-600'
-                            }`}
-                            title={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
-                          >
-                            <span
-                              className={`w-1.5 h-1.5 rounded-full ${
-                                item.isVeg ? 'bg-emerald-600' : 'bg-red-600'
-                              }`}
-                            />
-                          </span>
+                      {/* Dish Image Thumbnail */}
+                      {item.image && (
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shrink-0 bg-stone-100 border border-stone-200">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
+                      )}
 
-                          <span className="font-heading text-sm sm:text-base font-bold text-stone-900 group-hover:text-orange-600 transition-colors leading-tight">
-                            {item.name}
-                          </span>
+                      {/* Item Details */}
+                      <div className="flex-1 flex flex-col justify-between">
+                        <div>
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              {/* Veg / Non-Veg Icon */}
+                              <span
+                                className={`w-3.5 h-3.5 border flex items-center justify-center p-0.5 rounded-xs shrink-0 ${
+                                  item.isVeg ? 'border-emerald-600' : 'border-red-600'
+                                }`}
+                                title={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
+                              >
+                                <span
+                                  className={`w-1.5 h-1.5 rounded-full ${
+                                    item.isVeg ? 'bg-emerald-600' : 'bg-red-600'
+                                  }`}
+                                />
+                              </span>
 
-                          {item.isBestseller && (
-                            <span className="hidden sm:inline-block text-[10px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded-xs uppercase">
-                              Popular
-                            </span>
-                          )}
+                              <span className="font-heading text-sm sm:text-base font-bold text-stone-900 group-hover:text-orange-600 transition-colors leading-tight">
+                                {item.name}
+                              </span>
+
+                              {item.isBestseller && (
+                                <span className="text-[10px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded-xs uppercase">
+                                  Popular
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Price & Add Action */}
+                            <div className="flex items-center gap-2 shrink-0">
+                              <span className="font-heading font-extrabold text-stone-900 text-sm sm:text-base tabular-nums">
+                                ₹{item.price}
+                              </span>
+
+                              <button
+                                onClick={() => handleAddWithFeedback(item)}
+                                type="button"
+                                className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold transition-all ${
+                                  isJustAnimated
+                                    ? 'bg-emerald-600 text-white scale-110'
+                                    : isAdded
+                                    ? 'bg-orange-600 text-white hover:bg-orange-700'
+                                    : 'bg-stone-100 text-stone-700 hover:bg-orange-600 hover:text-white'
+                                }`}
+                                title="Add to order tray"
+                                aria-label={`Add ${item.name} to order tray for ₹${item.price}`}
+                              >
+                                {isJustAnimated ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                              </button>
+                            </div>
+                          </div>
+
+                          <p className="line-clamp-2 text-stone-600 text-[11px] sm:text-xs mt-1">
+                            {item.description}
+                          </p>
                         </div>
 
-                        {/* Classic Physical Menu Dotted Leader */}
-                        <div className="menu-dot-leader" aria-hidden="true" />
-
-                        {/* Price & Add Action */}
-                        <div className="flex items-center gap-2 shrink-0">
-                          <span className="font-heading font-extrabold text-stone-900 text-sm sm:text-base tabular-nums">
-                            ₹{item.price}
-                          </span>
-
-                          <button
-                            onClick={() => handleAddWithFeedback(item)}
-                            type="button"
-                            className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold transition-all ${
-                              isJustAnimated
-                                ? 'bg-emerald-600 text-white scale-110'
-                                : isAdded
-                                ? 'bg-orange-600 text-white hover:bg-orange-700'
-                                : 'bg-stone-100 text-stone-700 hover:bg-orange-600 hover:text-white'
-                            }`}
-                            title="Add to order tray"
-                            aria-label={`Add ${item.name} to order tray for ₹${item.price}`}
-                          >
-                            {isJustAnimated ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Description & Portion metadata */}
-                      <div className="mt-1 flex items-baseline justify-between gap-3 text-xs text-stone-500">
-                        <p className="line-clamp-2 text-stone-600 text-[11px] sm:text-xs">
-                          {item.description}
-                        </p>
                         {item.portion && (
-                          <span className="shrink-0 text-stone-400 font-medium text-[10px]">
-                            {item.portion}
-                          </span>
+                          <div className="mt-1 text-right">
+                            <span className="text-stone-400 font-medium text-[10px]">
+                              {item.portion}
+                            </span>
+                          </div>
                         )}
                       </div>
-
                     </div>
                   );
                 })}
@@ -329,13 +331,13 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddItem, cartItemIds
           ))}
         </div>
 
-        {/* Note on Freshness and Takeaway packaging */}
+        {/* Freshness Note */}
         <div className="mt-8 text-center text-xs text-stone-500 max-w-2xl mx-auto space-y-1">
           <p>
             * All biryanis are accompanied by fresh curd raita & traditional salan.
           </p>
           <p className="text-stone-600 font-medium">
-            * <strong>Takeaway / Parcel Charges:</strong> Standard packaging charge of ₹10 per food container applies for takeaway parcel and delivery orders (hygienic leak-proof packaging). Dine-in table dining has zero packaging charges.
+            * <strong>Takeaway / Parcel Charges:</strong> Standard packaging charge of ₹10 per food container applies for takeaway parcel and delivery orders. Dine-in table dining has zero packaging charges.
           </p>
         </div>
 
